@@ -9,8 +9,13 @@ interface SidebarProps {
   activeFilter?: "all" | "youtube" | "twitter";
 }
 
-export function Sidebar({ onFilterChange, activeFilter = "all" }: SidebarProps) {
-  const [selectedFilter, setSelectedFilter] = useState<"all" | "youtube" | "twitter">(activeFilter);
+export function Sidebar({
+  onFilterChange,
+  activeFilter = "all",
+}: SidebarProps) {
+  const [selectedFilter, setSelectedFilter] = useState<
+    "all" | "youtube" | "twitter"
+  >(activeFilter);
 
   const handleFilterClick = (filter: "all" | "youtube" | "twitter") => {
     setSelectedFilter(filter);
@@ -20,63 +25,50 @@ export function Sidebar({ onFilterChange, activeFilter = "all" }: SidebarProps) 
   };
 
   return (
-    <div className="h-screen bg-white border-r w-72 fixed left-0 top-0 pl-6 pt-4">
+    <div className="hidden lg:block h-screen bg-white border-r w-72 fixed left-0 top-0 pl-6 pt-4">
       <h1 className="flex text-2xl pt-2 items-center">
         <div className="pr-2">
           <Logo />
         </div>
         Brainly
       </h1>
-      
-      <div className="pt-8 pl-4">
-        <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">
+
+      <div className="w-full flex flex-col items-center py-4">
+        <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4 text-center">
           Filter Content
         </h3>
-        
-        <div 
-          className={`cursor-pointer mb-2 p-2 rounded-lg transition-colors duration-200 ${
-            selectedFilter === "all" 
-              ? "bg-purple-100 text-purple-700" 
-              : "text-gray-700 hover:bg-gray-100"
-          }`}
-          onClick={() => handleFilterClick("all")}
-        >
-          <div className="flex items-center">
-            <div className="w-5 h-5 mr-3 flex items-center justify-center">
-              <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-            </div>
-            <span className="text-sm font-medium">All Content</span>
-          </div>
-        </div>
 
-        <div 
-          className={`cursor-pointer mb-2 transition-colors duration-200 ${
-            selectedFilter === "youtube" 
-              ? "bg-red-50 text-red-700" 
-              : ""
-          }`}
-          onClick={() => handleFilterClick("youtube")}
-        >
-          <SidebarItem 
-            text="YouTube" 
-            icon={<YoutubeIcon />} 
-            isActive={selectedFilter === "youtube"}
-          />
-        </div>
-
-        <div 
-          className={`cursor-pointer mb-2 transition-colors duration-200 ${
-            selectedFilter === "twitter" 
-              ? "bg-blue-50 text-blue-700" 
-              : ""
-          }`}
-          onClick={() => handleFilterClick("twitter")}
-        >
-          <SidebarItem 
-            text="Twitter" 
-            icon={<TwitterIcon />} 
-            isActive={selectedFilter === "twitter"}
-          />
+        <div className="flex-row justify-center gap-2 flex-wrap">
+          <button
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              selectedFilter === "all"
+                ? "bg-purple-100 text-purple-700"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+            }`}
+            onClick={() => handleFilterClick("all")}
+          >
+            All Content
+          </button>
+          <button
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              selectedFilter === "youtube"
+                ? "bg-red-100 text-red-700"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+            }`}
+            onClick={() => handleFilterClick("youtube")}
+          >
+            YouTube
+          </button>
+          <button
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              selectedFilter === "twitter"
+                ? "bg-blue-100 text-blue-700"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+            }`}
+            onClick={() => handleFilterClick("twitter")}
+          >
+            Twitter
+          </button>
         </div>
       </div>
     </div>

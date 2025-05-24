@@ -38,7 +38,7 @@ export function LandingPage() {
         <div className="text-center">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
             Your Second Brain for
-            <span className="text-purple-600"> Digital Content</span>
+            <span className="text-purple-600"></span>
           </h1>
           <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
             Save, organize, and rediscover your favorite YouTube videos and

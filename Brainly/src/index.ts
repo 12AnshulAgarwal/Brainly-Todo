@@ -17,7 +17,7 @@ app.use(cors({
   origin: [
     'http://localhost:5173', // Vite dev server
     'http://localhost:3000', // Alternative dev server
-    'https://brainly-todo-3no5.vercel.app/', // Your frontend URL
+    'https://brainly-todo-mul2.vercel.app', // Your frontend URL
     'https://*.vercel.app' // Allow all Vercel apps
   ],
   credentials: true,
